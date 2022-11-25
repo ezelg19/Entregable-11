@@ -1,0 +1,45 @@
+<h1> Cargar Productos </h1>
+<form onsubmit="return addArray(this)">
+    <label style="margin: 0.5%" for="title">Title</label></br>
+    <input type="text" name="title" id="title"></br></br>
+    <label style="margin: 0.5%" for="price">Price</label></br>
+    <input type="text" name="price" id="price"></br></br>
+    <label style="margin: 0.5%" for="thumbnail">Thumbnail</label></br>
+    <input type="file" name="thumbnail" id="thumbnail"></br></br>
+    <input type="submit" value="Save">
+</form>
+</br>
+<div id="table">
+    <table style="border-collapse: collapse;width: 100%; border:1px solid;padding:1%;">
+        <thead class='thead-dark'>
+            <tr>
+                <th scope='col'>ID</th>
+                <th scope='col'>Title</th>
+                <th scope='col'>Price</th>
+                <th scope='col'>Thumbnail</th>
+            </tr>
+        </thead>
+        <tbody id="array">
+        </tbody>
+    </table>
+</div>
+
+{{!-- mensajes --}}
+<div style="text-align:center; width:500px; margin: 0.5%">
+    <b style="text-align:left; margin-right:100px">Chat</b>
+    <input type="text" name="name" id="name" placeholder="Nombre" style="width:100px;">
+    <input type="number" name="edad" id="edad" placeholder="Edad" style="width:100px;">
+</div>
+<div style="text-align:center; width:500px; margin: 0.5%">
+    <b style="text-align:left; margin-right:140px"></b>
+    <input type="text" name="lastName" id="lastName" placeholder="Apellido" style="width:100px;">
+    <input type="text" name="alias" id="alias" placeholder="Alias" style="width:100px;">
+</div>
+
+<div id="chat">
+    <div id="mensajes"></div>
+</div>
+<form onsubmit="return addMensaje(this)">
+    <input type="text" name="mensaje" id="mensaje" placeholder="Mensaje" style="width: 440px;">
+    <input type="submit" value="Save">
+</form>
