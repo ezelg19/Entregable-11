@@ -2,7 +2,10 @@ const { Router } = require('express')
 const { productosTest: productos } = require('../class/productosTest.js')
 const router = Router()
 
-// productos.popular()
+router.get('/cargar', async (req, res) => { 
+    productos.popular() 
+    res.redirect('./')
+})
 
 router.get('/', async (req, res) => {
     try {

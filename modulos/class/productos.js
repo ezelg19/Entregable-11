@@ -62,7 +62,7 @@ class Produc {
                     table.integer('price')
                     table.string('thumbnail')
                 })
-                    .then(() => console.log('BD creada'))
+                    .then(() => console.log(`BD creada /${this.table}`))
                     .catch((error) => { console.log(error); throw error })
             }
         })

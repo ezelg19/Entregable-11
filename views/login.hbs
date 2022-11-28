@@ -1,6 +1,14 @@
-<h1>Log in</h1>
-<form action="/src/routers/session/routerSession.js" method="get">
-    <input type="text" name="user" id="user"></br></br>
-    <input type="text" name="pass" id="pass"></br></br>
-    <input type="submit" value="Save">
+<form style="margin:2.5% 30%" onsubmit="return login(this)">
+
+    <div class="form-outline mb-4">
+        <input type="email" id="user" class="form-control" />
+        <label class="form-label" for="form2Example1">User Name</label>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input type="password" id="password" class="form-control" />
+        <label class="form-label" for="form2Example2">Password</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block mb-4" id="SignIn">Sign in</button>
 </form>

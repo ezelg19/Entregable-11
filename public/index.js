@@ -1,5 +1,15 @@
 const socket = io()
 
+const login = e => {
+    const user = document.querySelector('#user').value
+    const password = document.querySelector('#password').value
+    socket.emit('login', { user, password })
+    return false
+}
+
+
+
+
 const addArray = e => {
     const title = document.querySelector('#title').value
     const price = document.querySelector('#price').value
@@ -8,24 +18,32 @@ const addArray = e => {
     return false
 }
 
+const mensajes = e=>{  socket.emit('newMensaje')}
+
 const addMensaje = e => {
     fecha = new Date().toLocaleDateString()
     hora = new Date().toLocaleTimeString()
-    const nombre = document.querySelector('#name').value; const apellido = document.querySelector('#lastName').value; const edad = document.querySelector('#edad').value; const alias = document.querySelector('#alias').value
-    const author = {
-        nombre: nombre,
-        apellido: apellido,
-        edad: edad,
-        alias: alias
-    }
+
+    // const nombre = document.querySelector('#name').value
+    // const apellido = document.querySelector('#lastName').value
+    // const edad = document.querySelector('#edad').value
+    // const alias = document.querySelector('#alias').value
     const mensaje = document.querySelector('#mensaje').value
+
+    // const author = {
+    //     nombre: nombre,
+    //     apellido: apellido,
+    //     edad: edad,
+    //     alias: alias
+    // }
     const comentario = {
         hora: hora,
         fecha: fecha,
         mensaje: mensaje
     }
 
-    socket.emit('newMensaje', { author: author, mensaje: comentario })
+    // socket.emit('newMensaje', { author: author, mensaje: comentario })
+    socket.emit('newMensaje', { mensaje: comentario })
     return false
 }
 
@@ -44,10 +62,12 @@ const render = array => {
 
 const rendermsg = archivo => {
     const html = archivo.map(elem => {
+        const author = JSON.parse(elem.author)
+        const mensaje = JSON.parse(elem.mensaje)
         return (`<div>
-        <b style='color:blue'>${elem.author.alias}</b></br>
-        <a style='color:#B8B8B9'>${elem.mensaje.hora}</a>
-        <a>${elem.mensaje.mensaje}</a>
+        <b style='color:blue'>${author.alias}</b></br>
+        <a style='color:#B8B8B9'>${mensaje.hora}</a>
+        <a>${mensaje.mensaje}</a>
         </div>`)
     }).join(" ")
     document.querySelector('#mensajes').innerHTML = html

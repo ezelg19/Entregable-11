@@ -27,13 +27,13 @@
 {{!-- mensajes --}}
 <div style="text-align:center; width:500px; margin: 0.5%">
     <b style="text-align:left; margin-right:100px">Chat</b>
-    <input type="text" name="name" id="name" placeholder="Nombre" style="width:100px;">
-    <input type="number" name="edad" id="edad" placeholder="Edad" style="width:100px;">
+    {{!-- <input type="text" name="name" id="name" placeholder="Nombre" style="width:100px;">
+    <input type="number" name="edad" id="edad" placeholder="Edad" style="width:100px;"> --}}
 </div>
 <div style="text-align:center; width:500px; margin: 0.5%">
     <b style="text-align:left; margin-right:140px"></b>
-    <input type="text" name="lastName" id="lastName" placeholder="Apellido" style="width:100px;">
-    <input type="text" name="alias" id="alias" placeholder="Alias" style="width:100px;">
+    {{!-- <input type="text" name="lastName" id="lastName" placeholder="Apellido" style="width:100px;">
+    <input type="text" name="alias" id="alias" placeholder="Alias" style="width:100px;"> --}}
 </div>
 
 <div id="chat">
@@ -43,3 +43,7 @@
     <input type="text" name="mensaje" id="mensaje" placeholder="Mensaje" style="width: 440px;">
     <input type="submit" value="Save">
 </form>
+{{!-- <form action="/mensajes" method="post" >
+    <input type="text" name="mensaje" id="mensaje" placeholder="Mensaje" style="width: 440px;">
+    <button type="submit" value="Save"></button>
+</form> --}}

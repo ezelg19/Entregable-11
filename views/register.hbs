@@ -1,7 +1,39 @@
-<h1>Register</h1>
-<form action="" method="get">
-    <input type="text" name="user" id="user"></br></br>
-    <input type="password" name="pass" id="pass"></br></br>
-    <input type="password" name="passEqual" id="passEqual"></br></br> 
+{{!-- <form style="margin:2.5% 30%" onsubmit="return register(this)">
+  <!-- Name input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="name" name="name" class="form-control" />
+    <label class="form-label" for="registerName">Name</label>
+  </div>
+
+  <!-- Username input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="lastname" name="lastname" class="form-control" />
+    <label class="form-label" for="registerUsername">Lastname</label>
+  </div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="Alias" name="alias" class="form-control" />
+    <label class="form-label" for="registerEmail">Alias</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" id="password" name="password" class="form-control" />
+    <label class="form-label" for="registerPassword">Password</label>
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+</form> --}}
+
+
+
+<form style="margin:2.5% 20%" action="/" method="post">
+    <input type="text" name="nombre" id="nombre" placeholder="Nombre" ></br>
+    <input type="text" name="apellido" id="apellido" placeholder="Apellido" ></br>
+    <input type="text" name="alias" id="alias" placeholder="Alias" ></br>
+    <input type="password" name="password" id="password" placeholder="Password" ></br>
     <input type="submit" value="Save">
 </form>
+

@@ -5,7 +5,7 @@ const option = {
             host: "127.0.0.1",
             user: "root",
             password: "",
-            database: "TP9"
+            database: "TP10"
         },
         pool: { min: 0, max: 5 },
     },
