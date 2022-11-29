@@ -1,3 +1,14 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+    <div style="display:table; width:700px;">
+        <div style="width:500px; margin: 0.5%; display:inline">
+            <FONT SIZE=7>Bienvenido {{alias}}</FONT>
+        </div>
+        <form class="form-inline" style="margin-left: 100px; display:inline;text" action="/logout", method="post">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Desconectar</button>
+        </form>
+    </div>
+</nav>
+
 <h1> Cargar Productos </h1>
 <form onsubmit="return addArray(this)">
     <label style="margin: 0.5%" for="title">Title</label></br>
@@ -43,7 +54,7 @@
     <input type="text" name="mensaje" id="mensaje" placeholder="Mensaje" style="width: 440px;">
     <input type="submit" value="Save">
 </form>
-{{!-- <form action="/mensajes" method="post" >
+{{!-- <form action="/mensajes" method="post">
     <input type="text" name="mensaje" id="mensaje" placeholder="Mensaje" style="width: 440px;">
     <button type="submit" value="Save"></button>
 </form> --}}

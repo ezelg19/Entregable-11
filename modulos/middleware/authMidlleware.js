@@ -1,9 +1,21 @@
 const authMiddleware = (req, res, nex) => {
     if (req.session?.user) {
-        nex()
+        return nex()
     }
-    return res.render('register', { root: __dirname })
+    return res.redirect('/login')
 }
 
+const sessionExpirada = (req,res,nex)=>{
+    if (req.session?.user){
+        if(req.cookies.time){
+            return nex()
+        }
+        req.session.destroy(error => {
+            if (error) console.log(error)
+        })
+        return res.redirect('/login/expiro')
+    }
+    return res.redirect('/login')
+}
 
-module.exports = { authMiddleware }
+module.exports = { authMiddleware, sessionExpirada }

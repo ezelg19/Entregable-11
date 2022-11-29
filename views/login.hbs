@@ -1,14 +1,22 @@
-<form style="margin:2.5% 30%" onsubmit="return login(this)">
-
+<form style="margin:2.5% 30%" action='/login' method="post">
+    {{#if expiro}}
+        <div class="form-outline mb-4">
+            <FONT SIZE=7>Session Expirada</FONT>
+        </div>
+    {{/if}}
     <div class="form-outline mb-4">
-        <input type="email" id="user" class="form-control" />
-        <label class="form-label" for="form2Example1">User Name</label>
+        <input type="text" id="nombre" name="nombre" class="form-control" />
+        <label class="form-label" for="form2Example1">Nombre</label>
     </div>
 
     <div class="form-outline mb-4">
-        <input type="password" id="password" class="form-control" />
-        <label class="form-label" for="form2Example2">Password</label>
+        <input type="text" id="apellido" name="apellido" class="form-control" />
+        <label class="form-label" for="form2Example2">Apellido</label>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-block mb-4" id="SignIn">Sign in</button>
+    <div class="form-outline mb-4">
+        <input type="text" id="alias" name="alias" class="form-control" />
+        <label class="form-label" for="form2Example2">Alias</label>
+    </div>
+    <input type="submit" class="btn btn-primary btn-block mb-4" value="Sign In">
 </form>

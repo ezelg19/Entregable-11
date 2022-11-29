@@ -24,26 +24,13 @@ const addMensaje = e => {
     fecha = new Date().toLocaleDateString()
     hora = new Date().toLocaleTimeString()
 
-    // const nombre = document.querySelector('#name').value
-    // const apellido = document.querySelector('#lastName').value
-    // const edad = document.querySelector('#edad').value
-    // const alias = document.querySelector('#alias').value
     const mensaje = document.querySelector('#mensaje').value
-
-    // const author = {
-    //     nombre: nombre,
-    //     apellido: apellido,
-    //     edad: edad,
-    //     alias: alias
-    // }
     const comentario = {
         hora: hora,
         fecha: fecha,
         mensaje: mensaje
     }
-
-    // socket.emit('newMensaje', { author: author, mensaje: comentario })
-    socket.emit('newMensaje', { mensaje: comentario })
+    socket.emit('newMensaje', { mensaje: comentario, sid:document.cookie.replace(/(?:(?:^|.*;\s*)sid\s*\=\s*([^;]*).*$)|^.*$/, "$1")})
     return false
 }
 
@@ -64,6 +51,7 @@ const rendermsg = archivo => {
     const html = archivo.map(elem => {
         const author = JSON.parse(elem.author)
         const mensaje = JSON.parse(elem.mensaje)
+        console.log(elem.author)
         return (`<div>
         <b style='color:blue'>${author.alias}</b></br>
         <a style='color:#B8B8B9'>${mensaje.hora}</a>
