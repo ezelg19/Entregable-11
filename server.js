@@ -1,21 +1,23 @@
 require('dotenv').config()
 const express = require('express')
-const { Server: HttpServer, request } = require('http')
+const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const hbs = require('express-handlebars')
 const MongoStore = require('connect-mongo')
 
-const test = require('./modulos/routers/routerProductoTest.js')
 const { productos } = require('./modulos/class/productos.js')
 const mensajes = require('./modulos/class/mensajes.js')
-const authors = require('./modulos/class/authors.js')
 const routerProd = require('./modulos/routers/routerProductos.js')
 const routermsg = require('./modulos/routers/routermsg.js')
 const login = require('./modulos/routers/session/routerLogin.js')
+const register = require('./modulos/routers/session/routerRegister.js')
 const routerSession = require('./modulos/routers/session/routerSession.js')
 const routerCookies = require('./modulos/routers/cookies/routerCookies.js')
+const { passport } = require('./modulos/middleware/passport.js')
+
+
 
 
 const app = express()
@@ -35,29 +37,38 @@ const config = {
     useUnifiedTopology: true
 }
 
+app.use(session({
+    secret: process.env.SECRET_KEY_SESSION,
+    // store: MongoStore.create({
+    //     mongoUrl: process.env.MONGOURL,
+    //     mongoOptions: config
+    // }),
+    cookie:{
+        httpOnly: false,
+        secure: false,
+        maxAge: 1000*60*5
+    },
+    rolling: true,
+    resave: true,
+    saveUninitialized: true
+}))
 app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser(process.env.SECRET_KEY_COOKIE))
-app.use(session({
-    secret: process.env.SECRET_KEY_SESSION,
-    store: MongoStore.create({
-        mongoUrl: process.env.MONGOURL,
-        mongoOptions: config
-    }),
-    resave: true,
-    saveUninitialized: true
-}))
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.set('views', './views')
 app.set('view engine', 'hbs')
 
 app.use('/', routerSession)
+app.use('/register', register)
 app.use('/login', login)
 app.use('/appi/productos', routerProd)
-app.use('/appi/productos-test', test)
 app.use('/cookies', routerCookies)
 app.use('/mensajes', routermsg)
+
 
 let users = 0
 
@@ -74,8 +85,8 @@ io.on('connection', async (socket) => {
         productos.save(data)
         io.sockets.emit('array', await productos.getAll())
     })
-    socket.on('newMensaje', async data => {  
-        await mensajes.save(data.mensaje, data.sid)
+    socket.on('newMensaje', async data => {
+        await mensajes.save(data.mensaje, data.user)
         io.sockets.emit('mensajes', await mensajes.getAll())
     })
     socket.on('disconnect', () => { console.log('user disconnected'), users-- })

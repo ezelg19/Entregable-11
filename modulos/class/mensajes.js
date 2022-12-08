@@ -1,6 +1,6 @@
 const knex = require('knex')
 const { option } = require('../configKnex/config.js')
-const authors = require('./authors')
+const {authors} = require('./authors.js')
 
 class Mensajes {
     constructor(config, tabla) {
@@ -9,9 +9,9 @@ class Mensajes {
         this.crearTable()
     }
 
-    async save(obj, sid) {
+    async save(obj, user) {
         try {
-            const author = await authors.getBySid(sid)
+            const author = await authors.getByUser(user)
             return await this.knex(this.table).insert({author:author[0],mensaje:obj})
         }
         catch (error) { console.log(error) }

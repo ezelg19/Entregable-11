@@ -30,7 +30,7 @@ const addMensaje = e => {
         fecha: fecha,
         mensaje: mensaje
     }
-    socket.emit('newMensaje', { mensaje: comentario, sid:document.cookie.replace(/(?:(?:^|.*;\s*)sid\s*\=\s*([^;]*).*$)|^.*$/, "$1")})
+    socket.emit('newMensaje', { mensaje: comentario, user:document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1")})
     return false
 }
 
@@ -51,9 +51,8 @@ const rendermsg = archivo => {
     const html = archivo.map(elem => {
         const author = JSON.parse(elem.author)
         const mensaje = JSON.parse(elem.mensaje)
-        console.log(elem.author)
         return (`<div>
-        <b style='color:blue'>${author.alias}</b></br>
+        <b style='color:blue'>${author.username}</b></br>
         <a style='color:#B8B8B9'>${mensaje.hora}</a>
         <a>${mensaje.mensaje}</a>
         </div>`)

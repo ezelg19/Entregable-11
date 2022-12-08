@@ -1,13 +1,14 @@
 const { Router } = require('express')
 const { productosTest: productos } = require('../class/productosTest.js')
+const { checkAuthentication } = require('../middleware/checkAuthentication.js')
 const router = Router()
 
-router.get('/cargar', async (req, res) => { 
-    productos.popular() 
+router.get('/cargar', async (req, res) => {
+    productos.popular()
     res.redirect('./')
 })
 
-router.get('/', async (req, res) => {
+router.get('/', checkAuthentication, async (req, res) => {
     try {
         const array = await productos.getAll()
         res.render('lista', {
@@ -19,7 +20,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post("/", async (req, res) => {
+router.post("/", checkAuthentication, async (req, res) => {
     try {
         const { nombre, precio } = req.body
         await productos.save({ nombre: nombre, precio: precio })
@@ -28,7 +29,7 @@ router.post("/", async (req, res) => {
     catch (error) { res.status(400).send({ msg: "Error al cargar el producto", err: error }) }
 })
 
-router.post("/auto/:cant?", async (req, res) => {
+router.post("/auto/:cant?", checkAuthentication, async (req, res) => {
     try {
         if (req.params.cant) { await productos.popular(cant = parseInt(req.params.cant)) }
         else { await productos.popular() }

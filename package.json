@@ -1,5 +1,5 @@
 {
-  "name": "tp10",
+  "name": "tp11",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@faker-js/faker": "^7.6.0",
+    "bcrypt": "^5.1.0",
     "connect-mongo": "^4.6.0",
     "connect-redis": "^5.0.0",
     "cookie-parser": "^1.4.6",
@@ -18,12 +18,14 @@
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
-    "faker": "^5.5.3",
     "knex": "^2.3.0",
     "mysql": "^2.18.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "redis": "^3.0.2",
     "session-file-store": "^1.5.0",
     "socket.io": "^4.5.4",
-    "sqlite3": "^5.1.2"
+    "sqlite3": "^5.1.2",
+    "mongoose": "^6.7.0"
   }
 }

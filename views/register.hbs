@@ -1,39 +1,27 @@
-{{!-- <form style="margin:2.5% 30%" onsubmit="return register(this)">
-  <!-- Name input -->
+<form style="margin:2.5% 30%" action='/register' method="post">
+  {{#if repetido}}
   <div class="form-outline mb-4">
-    <input type="text" id="name" name="name" class="form-control" />
-    <label class="form-label" for="registerName">Name</label>
+    <FONT SIZE=5>Usuario ya registrado</FONT>
+  </div>
+  {{/if}}
+    ir a <a href="/login">Iniciar session</a>
+  <div class="form-outline mb-4">
+    <input type="text" id="nombre" name="nombre" class="form-control" />
+    <label class="form-label" for="form2Example1">Nombre</label>
   </div>
 
-  <!-- Username input -->
   <div class="form-outline mb-4">
-    <input type="text" id="lastname" name="lastname" class="form-control" />
-    <label class="form-label" for="registerUsername">Lastname</label>
+    <input type="text" id="apellido" name="apellido" class="form-control" />
+    <label class="form-label" for="form2Example2">Apellido</label>
   </div>
 
-  <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="text" id="Alias" name="alias" class="form-control" />
-    <label class="form-label" for="registerEmail">Alias</label>
+    <input type="text" id="username" name="username" class="form-control" />
+    <label class="form-label" for="form2Example2">Alias</label>
   </div>
-
-  <!-- Password input -->
   <div class="form-outline mb-4">
     <input type="password" id="password" name="password" class="form-control" />
-    <label class="form-label" for="registerPassword">Password</label>
+    <label class="form-label" for="form2Example2">Contraseña</label>
   </div>
-
-  <!-- Submit button -->
-  <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-</form> --}}
-
-
-
-<form style="margin:2.5% 20%" action="/" method="post">
-    <input type="text" name="nombre" id="nombre" placeholder="Nombre" ></br>
-    <input type="text" name="apellido" id="apellido" placeholder="Apellido" ></br>
-    <input type="text" name="alias" id="alias" placeholder="Alias" ></br>
-    <input type="password" name="password" id="password" placeholder="Password" ></br>
-    <input type="submit" value="Save">
+  <input type="submit" class="btn btn-primary btn-block mb-4" value="Register">
 </form>
-

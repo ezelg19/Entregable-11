@@ -4,7 +4,7 @@ const { sessionExpirada } = require('../../middleware/authMidlleware.js')
 const router = Router()
 
 router.get('/',sessionExpirada, (req, res) => {
-    res.cookie('sid',req.sessionID)
+    res.cookie('user',req.session.user)
     res.cookie('time','1min',{maxAge: 60000}).render('main', { root: __dirname })
 })
 

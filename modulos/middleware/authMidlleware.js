@@ -1,9 +1,9 @@
-const authMiddleware = (req, res, nex) => {
-    if (req.session?.user) {
-        return nex()
-    }
-    return res.redirect('/login')
-}
+// const authMiddleware = (req, res, nex) => {
+//     if (req.session?.user) {
+//         return nex()
+//     }
+//     return res.redirect('/login')
+// }
 
 const sessionExpirada = (req,res,nex)=>{
     if (req.session?.user){
@@ -18,4 +18,4 @@ const sessionExpirada = (req,res,nex)=>{
     return res.redirect('/login')
 }
 
-module.exports = { authMiddleware, sessionExpirada }
+module.exports = { sessionExpirada }
